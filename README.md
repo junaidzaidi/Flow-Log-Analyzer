@@ -15,7 +15,7 @@ This Python program processes flow logs (version 2 format), parses the log data,
 
 ## How to Run
 
-1. Clone or download this repository to your local machine. [git clone <>]
+1. Clone or download this repository to your local machine.
 ```bash
 git clone https://github.com/junaidzaidi/Flow-Log-Analyzer.git
 ```
