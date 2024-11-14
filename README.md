@@ -25,7 +25,7 @@ git clone https://github.com/junaidzaidi/Flow-Log-Analyzer.git
    - `lookup_table.csv`: The lookup table CSV file that maps `dstport` and `protocol` to `tag`.
 4. Run following command at project root.
 ```bash
-python3 src/run.py
+python src/run.py
 ```
 5. The report will be generated in `output/flow_log_report.txt`.
 6. The output of the terminal should look similar to:
@@ -35,9 +35,15 @@ python3 src/run.py
 ## How to run tests
 
 1. Run following command at project root to run tests.
+- For Mac:
 ```bash
 export PYTHONPATH=./src
-python3 -m unittest discover tests/
+python -m unittest discover tests/
+```
+- For Windows:
+```bash
+set PYTHONPATH=./src
+python -m unittest discover tests/
 ```
 2. The output of the tests should look similar to:
 
