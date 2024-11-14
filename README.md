@@ -24,10 +24,10 @@ git clone https://github.com/junaidzaidi/Flow-Log-Analyzer.git
    - `sample_flow_logs.txt`: Your flow log data in the correct format (Flow Log, version 2).
    - `lookup_table.csv`: The lookup table CSV file that maps `dstport` and `protocol` to `tag`.
 4. Run following command at project root.
+NOTE: Use `python` or `python3` depending on the configuration.
 ```bash
 python3 src/run.py
 ```
-NOTE: Use `python` or `python3` depending on the configuration.
 5. The report will be generated in `output/flow_log_report.txt`.
 6. The output of the terminal should look similar to:
 
@@ -36,6 +36,7 @@ NOTE: Use `python` or `python3` depending on the configuration.
 ## How to run tests
 
 1. Run following command at project root to run tests.
+NOTE: Use `python` or `python3` depending on the configuration.
 - For Mac:
 ```bash
 export PYTHONPATH=./src
@@ -46,7 +47,6 @@ python3 -m unittest discover tests/
 set PYTHONPATH=./src
 python -m unittest discover tests/
 ```
-NOTE: Use `python` or `python3` depending on the configuration.
 2. The output of the tests should look similar to:
 
 ![alt text](tests/tests_output.png)
