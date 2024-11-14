@@ -34,7 +34,7 @@ python3 src/run.py
 
 ![alt text](output/terminal_output.png)
 
-## How to run tests
+## How to run Tests
 
 1. Run following command at project root to run tests.
 
