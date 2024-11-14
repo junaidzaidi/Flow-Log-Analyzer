@@ -1,13 +1,13 @@
 import csv
 from protocol_map import protocol_map
 
-def read_lookup_table(lookup_table_file):
+def read_lookup_table(lookup_table_file_path):
     """
     Reads the lookup table (CSV file) and returns the dictionary mapping (dstport,protocol) to tag
     """
 
     lookup_table = {}
-    with open(lookup_table_file, 'r') as file:
+    with open(lookup_table_file_path, 'r') as file:
         reader = csv.reader(file)
         # Skip the header row
         header = next(reader, None)
@@ -21,13 +21,14 @@ def read_lookup_table(lookup_table_file):
     
     return lookup_table
 
-def process_logs(flow_log_file, lookup_table):
+def process_logs(flow_log_file_path, lookup_table):
     '''
     Parses the flow log file and returns a list of flow log entries as tuple
     '''
     tag_counts = {}
     port_protocol_counts = {}
-    with open(flow_log_file, 'r') as file:
+    logs_count = 0
+    with open(flow_log_file_path, 'r') as file:
         for line in file:
             parts = line.split()
             dstport = parts[6]
@@ -42,5 +43,6 @@ def process_logs(flow_log_file, lookup_table):
 
             # Count port/protocol combinations
             port_protocol_counts[(dstport, protocol)] = port_protocol_counts.get((dstport, protocol), 0) + 1
+            logs_count += 1
 
-    return tag_counts, port_protocol_counts
+    return tag_counts, port_protocol_counts, logs_count

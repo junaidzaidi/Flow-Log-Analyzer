@@ -7,23 +7,32 @@ def run_flow_log_analysis(flow_log_file, lookup_table_file, output_file):
     """
     Function that orchestrates reading the lookup table, processing the flow log, and generating the report.
     """
-    # Read lookup table into a dictionary
+    print("Running flow log analysis:")
+    
+    # print(f"Reading from the lookup table file: {lookup_table_file}")
     lookup_table = read_lookup_table(lookup_table_file)
+    print(f"Read {len(lookup_table)} records from the lookup table file: {lookup_table_file}")
     
-    # Process flow logs line by line and generate counts
-    tag_counts, port_protocol_counts = process_logs(flow_log_file, lookup_table)
+    # print(f"\nProcessing flow logs file: {flow_log_file}")
+    tag_counts, port_protocol_counts, count = process_logs(flow_log_file, lookup_table)
+    print(f"Processed {count} logs from flow logs file: {flow_log_file}")
     
-    # Generate and write the report to a file
     generate_report(tag_counts, port_protocol_counts, output_file)
+    print(f"Wrote flow log report to file: {output_file}")
 
-# Example usage
 if __name__ == '__main__':
-    # Path to files inside the data folder
-    # print("PATH", os.path.join('data', 'lookup_table.csv'))
+    
     flow_log_file = os.path.join('data', 'sample_flow_logs.txt')
     lookup_table_file = os.path.join('data', 'lookup_table.csv')
-    output_file = os.path.join('data', 'flow_log_report.txt')
-    # data/lookup_table.csv
 
-    # Run the analysis
+    # Maximum File Sizes
+    # flow_log_file = os.path.join('data', 'sample_flow_logs_10MB.txt')
+    # lookup_table_file = os.path.join('data', 'lookup_table_10K.csv')
+
+    # Empty Files
+    # flow_log_file = os.path.join('data', 'sample_flow_logs_empty.txt')
+    # lookup_table_file = os.path.join('data', 'lookup_table_empty.csv')
+
+    output_file = os.path.join('output', 'flow_log_report.txt')
+    
     run_flow_log_analysis(flow_log_file, lookup_table_file, output_file)
