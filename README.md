@@ -25,7 +25,8 @@ This Python program processes flow logs (version 2 format), parses the log data,
 python3 src/run.py
 ```
 5. The report will be generated in `output/flow_log_report.txt`.
-6. The output of the terminal should look like this.
+6. The output of the terminal should look similar to:
+
 ![alt text](output/terminal_output.png)
 
 ## How to run tests
@@ -35,14 +36,15 @@ python3 src/run.py
 export PYTHONPATH=./src
 python3 -m unittest discover tests/
 ```
-2. The output of the tests should look like this
+2. The output of the tests should look similar to:
+
 ![alt text](tests/tests_output.png)
 
-- **Other Tests Done:**
-1. Tested with a maximum flow log file of size 10 MB: [`output/sample_flow_logs_10MB.txt`]
-1. Tested with an empty flow log file: [`output/sample_flow_logs_empty.txt`]
-2. Tested with a maximum lookup table with 10k records: [`output/lookup_table_10K.csv`]
-3. Tested with an empty lookup table: [`output/lookup_table_empty.csv`]
+3. **Other Tests Done:**
+   - Tested with a maximum flow log file of size 10 MB: [`output/sample_flow_logs_10MB.txt`]
+   - Tested with an empty flow log file: [`output/sample_flow_logs_empty.txt`]
+   - Tested with a maximum lookup table with 10k records: [`output/lookup_table_10K.csv`]
+   - Tested with an empty lookup table: [`output/lookup_table_empty.csv`]
 
 ## How the Program Works
 
@@ -54,7 +56,7 @@ python3 -m unittest discover tests/
    - If no match is found for a particular `dstport` and `protocol` combination, the tag `Untagged` is assigned.
 3. Generating the Report:
    - The program counts how many times each `tag` appears and how many times each `(dstport, protocol)` combination is found in the flow logs.
-   - The results are written to a text file: `(flow_log_report.txt)`.
+   - The results are written to a text file: `output/flow_log_report.txt`.
 
 ## Runtime Complexity
 
